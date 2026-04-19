@@ -1,80 +1,54 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeLanka | Pro Analysis</title>
+    <title>TradeLanka - Crypto & Forex Analysis</title>
     <style>
-        :root { --primary: #f3ba2f; --bg: #0b0e11; --card: #1e2329; --text: #eaeaea; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg); color: var(--text); }
-        nav { background: var(--card); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
-        .logo { font-size: 24px; font-weight: bold; color: var(--primary); }
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
-        
-        /* Chart Styling */
-        .chart-container { background: var(--card); border-radius: 10px; overflow: hidden; margin-bottom: 30px; border: 1px solid #333; height: 500px; }
-        
-        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .analysis-box { background: var(--card); padding: 20px; border-radius: 10px; border-top: 4px solid var(--primary); }
-        .tag { background: #474d57; padding: 3px 8px; border-radius: 4px; font-size: 11px; margin-bottom: 10px; display: inline-block; }
-        h2 { font-size: 20px; margin: 10px 0; color: var(--primary); }
-        .levels { display: flex; justify-content: space-between; background: #161a1e; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 14px; }
-        
-        @media (max-width: 768px) { .analysis-grid { grid-template-columns: 1fr; } }
+        :root {
+            --bg: #0b0e11;
+            --card: #1e2329;
+            --text: #eaecef;
+            --accent: #f3ba2f;
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 10px; }
+        .header { text-align: center; padding: 20px; color: var(--accent); }
+        .chart-container { background: var(--card); border-radius: 12px; padding: 10px; margin-bottom: 20px; height: 450px; border: 1px solid #333; }
+        .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .box { background: var(--card); padding: 20px; border-radius: 12px; border-top: 4px solid var(--accent); }
+        h2 { color: var(--accent); font-size: 20px; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .news-frame { border-radius: 8px; border: none; width: 100%; height: 500px; }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">TradeLanka</div>
-    <div style="color: #848e9c; font-size: 12px;">Live Market Analysis Center</div>
-</nav>
+    <div class="header">
+        <h1>TRADE LANKA PRO</h1>
+        <p>Market Analysis & Real-time Updates</p>
+    </div>
 
-<div class="container">
     <div class="chart-container">
-        <div id="tradingview_widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-        new TradingView.widget({
-          "width": "100%",
-          "height": "100%",
-          "symbol": "OANDA:XAUUSD",
-          "interval": "H4",
-          "timezone": "Etc/UTC",
-          "theme": "dark",
-          "style": "1",
-          "locale": "en",
-          "toolbar_bg": "#f1f3f6",
-          "enable_publishing": false,
-          "hide_side_toolbar": false,
-          "allow_symbol_change": true,
-          "container_id": "tradingview_widget"
-        });
-        </script>
+        <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_762c9&symbol=BINANCE:BTCUSDT&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=dark&style=1&timezone=Etc%2FUTC&studies_overrides={}&overrides={}&enabled_features=[]&disabled_features=[]&locale=en" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 
     <div class="analysis-grid">
-        <div class="analysis-box">
-            <div class="tag">Forex / Metal</div>
-            <h2>Gold (XAU/USD) Analysis</h2>
-            <div class="levels">
-                <span><strong style="color: #0ecb81;">Support:</strong> $2,350</span>
-                <span><strong style="color: #f6465d;">Resistance:</strong> $2,420</span>
-            </div>
-            <p>රත්‍රන් මිල දැනට "All-Time High" මට්ටම් අසල පවතී. භූ-දේශපාලනික තත්ත්වයන් මත ආරක්ෂිත ආයෝජනයක් ලෙස රත්‍රන් සඳහා ඇති ඉල්ලුම ඉහළ ගොස් ඇත. $2,420 මට්ටම ස්ථාවරව බිඳ දැමුවහොත් මිල තවදුරටත් ඉහළ යා හැක.</p>
+        <div class="box">
+            <h2>📰 Latest Crypto News</h2>
+            <iframe class="news-frame" src="https://rss.app/embed/v1/wall/tY99O8Dka3lVwN8j"></iframe>
         </div>
 
-        <div class="analysis-box">
-            <div class="tag">Crypto</div>
-            <h2>Bitcoin (BTC/USDT) Analysis</h2>
-            <div class="levels">
-                <span><strong style="color: #0ecb81;">Support:</strong> $68,500</span>
-                <span><strong style="color: #f6465d;">Resistance:</strong> $72,400</span>
-            </div>
-            <p>BTC මිල දැනට Consolidation අදියරක පවතී. RSI Indicator එකට අනුව වෙළඳපොළ තවමත් Bullish තත්ත්වයක පවතින බැවින්, නැවතත් $72,000 මට්ටම පරීක්ෂා කිරීමට වැඩි ඉඩක් ඇත.</p>
+        <div class="box">
+            <h2>🚀 Market Analysis</h2>
+            <p><strong>BTC/USDT:</strong> Currently testing major resistance. Watching for a breakout above $65k.</p>
+            <p><strong>Sentiment:</strong> Neutral to Bullish. Keep an eye on global economic news.</p>
+            <hr style="border: 0.5px solid #333;">
+            <p style="font-size: 12px; color: #848e9c;">Updated: Just now</p>
         </div>
     </div>
-</div>
+
+    <footer style="text-align: center; padding: 40px; color: #555;">
+        © 2024 TradeLanka Official. All Rights Reserved.
+    </footer>
 
 </body>
 </html>
