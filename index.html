@@ -3,56 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeLanka - Crypto & Forex Analysis</title>
+    <title>TradeLanka Pro | Professional Crypto Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --bg: #0b0e11;
-            --card: #1e2329;
-            --text: #eaecef;
-            --accent: #f3ba2f;
-        }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 10px; }
-        .header { text-align: center; padding: 20px; color: var(--accent); }
-        .chart-container { background: var(--card); border-radius: 12px; padding: 10px; margin-bottom: 20px; height: 450px; border: 1px solid #333; }
-        .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .box { background: var(--card); padding: 20px; border-radius: 12px; border-top: 4px solid var(--accent); }
-        h2 { color: var(--accent); font-size: 20px; margin-top: 0; display: flex; align-items: center; gap: 10px; }
-        .news-frame { border-radius: 8px; border: none; width: 100%; height: 500px; }
+        body { background-color: #0b0e11; color: #eaecef; }
+        .tradingview-widget-container { height: 500px !important; }
+        .gradient-text { background: linear-gradient(90deg, #f3ba2f, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link:hover { color: #f3ba2f; transition: 0.3s; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>TRADE LANKA PRO</h1>
-        <p>Market Analysis & Real-time Updates</p>
-    </div>
-
-    <div class="chart-container">
-        <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_762c9&symbol=BINANCE:BTCUSDT&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=dark&style=1&timezone=Etc%2FUTC&studies_overrides={}&overrides={}&enabled_features=[]&disabled_features=[]&locale=en" width="100%" height="100%" frameborder="0"></iframe>
-    </div>
-
-    <div class="analysis-grid">
-        <div class="box">
-            <h2>📰 Latest Crypto News</h2>
-            <div class="box">
-    <h2>📰 Crypto News Feed</h2>
-    <div style="width: 100%; height: 500px; background: #1e2329; border-radius: 8px; overflow: hidden;">
-        <iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=dark&cnt=10&pref_coin_id=1505&graph=yes" width="100%" height="500px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe>
-    </div>
-</div>
-
-
-     <div class="box">
-            <h2>🚀 Market Analysis</h2>
-            <p><strong>BTC/USDT:</strong> Currently testing major resistance. Watching for a breakout above $65k.</p>
-            <p><strong>Sentiment:</strong> Neutral to Bullish. Keep an eye on global economic news.</p>
-            <hr style="border: 0.5px solid #333;">
-            <p style="font-size: 12px; color: #848e9c;">Updated: Just now</p>
+    <nav class="border-b border-gray-800 p-4 bg-[#161a1e] sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">TRADE LANKA PRO</h1>
+            <div class="hidden md:flex space-x-6 font-medium">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Live Markets</a>
+                <a href="#" class="nav-link">Signals</a>
+                <a href="#" class="nav-link text-[#f3ba2f]">Analysis</a>
+            </div>
+            <button class="bg-[#f3ba2f] text-black px-4 py-2 rounded-md font-bold hover:bg-yellow-500 transition">Get Signals</button>
         </div>
+    </nav>
+
+    <header class="py-12 px-4 text-center">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Master the <span class="gradient-text">Crypto Market</span></h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">High accuracy market analysis, real-time charts, and the latest crypto news for Sri Lankan traders.</p>
+    </header>
+
+    <div class="bg-[#1e2329] border-y border-gray-800 py-2">
+        <iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=dark&pref_coin_id=1505&invert_hover=no" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe>
     </div>
 
-    <footer style="text-align: center; padding: 40px; color: #555;">
-        © 2024 TradeLanka Official. All Rights Reserved.
+    <main class="container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2">
+                <div class="bg-[#1e2329] p-4 rounded-xl border border-gray-800 shadow-2xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fas fa-chart-line mr-2 text-[#f3ba2f]"></i> Live BTC/USDT Market</h3>
+                    <div class="h-[500px]">
+                        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&interval=D&theme=dark" width="100%" height="100%" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-[#1e2329] p-6 rounded-xl border-l-4 border-[#f3ba2f] shadow-lg">
+                    <h3 class="text-xl font-bold mb-3 text-[#f3ba2f]">🚀 Expert Analysis</h3>
+                    <p class="text-gray-300 leading-relaxed mb-4">BTC is testing a critical zone. If it holds $64,000, we expect a massive rally to $72,000. Altcoins are getting ready for a breakout.</p>
+                    <span class="text-xs text-gray-500">Last updated: 5 mins ago</span>
+                </div>
+
+                <div class="bg-[#1e2329] p-4 rounded-xl border border-gray-800 shadow-lg h-[400px] overflow-hidden">
+                    <h3 class="text-xl font-bold mb-4"><i class="far fa-newspaper mr-2 text-[#f3ba2f]"></i> Top Stories</h3>
+                    <iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=dark&cnt=5&pref_coin_id=1505" width="100%" height="350px" frameborder="0"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-[#161a1e] border-t border-gray-800 py-10 text-center">
+        <div class="mb-4 space-x-6 text-gray-500 text-xl">
+            <a href="#"><i class="fab fa-telegram hover:text-[#f3ba2f]"></i></a>
+            <a href="#"><i class="fab fa-facebook hover:text-[#f3ba2f]"></i></a>
+            <a href="#"><i class="fab fa-whatsapp hover:text-[#f3ba2f]"></i></a>
+        </div>
+        <p class="text-gray-600">© 2026 TradeLanka Official. Built for Professional Traders.</p>
     </footer>
 
 </body>
