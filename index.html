@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeLanka Pro | Advanced Crypto Tools</title>
+    <title>TradeLanka Pro | Professional Crypto Tools</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #0b0e11; color: #eaecef; }
+        body { background-color: #0b0e11; color: #eaecef; font-family: 'Inter', sans-serif; }
         .gradient-text { background: linear-gradient(90deg, #f3ba2f, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: #1e2329; border: 1px solid #2b3139; border-radius: 12px; }
-        .calculator-input { background: #0b0e11; border: 1px solid #474d57; color: white; padding: 10px; border-radius: 8px; width: 100%; }
+        .glass-card { background: #1e2329; border: 1px solid #2b3139; border-radius: 12px; transition: transform 0.2s; }
+        .glass-card:hover { border-color: #f3ba2f; }
+        .calculator-input { background: #0b0e11; border: 1px solid #474d57; color: white; padding: 12px; border-radius: 8px; width: 100%; outline: none; }
+        .calculator-input:focus { border-color: #f3ba2f; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #474d57; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -18,12 +22,12 @@
     <nav class="border-b border-gray-800 p-4 bg-[#161a1e] sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold gradient-text">TRADE LANKA PRO</h1>
-            <div class="hidden md:flex space-x-6 text-sm">
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#" class="hover:text-[#f3ba2f]">Markets</a>
                 <a href="#" class="hover:text-[#f3ba2f]">Calculator</a>
                 <a href="#" class="hover:text-[#f3ba2f]">Analysis</a>
             </div>
-            <button class="bg-[#f3ba2f] text-black px-4 py-2 rounded-md font-bold text-sm">GET SIGNALS</button>
+            <button class="bg-[#f3ba2f] hover:bg-[#dbab26] text-black px-5 py-2 rounded-md font-bold text-sm transition">GET SIGNALS</button>
         </div>
     </nav>
 
@@ -34,7 +38,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
             <div class="lg:col-span-2 glass-card p-4">
-                <h3 class="text-lg font-bold mb-4 flex items-center"><i class="fas fa-chart-line mr-2 text-[#f3ba2f]"></i> Live Market View</h3>
+                <h3 class="text-lg font-bold mb-4 flex items-center"><i class="fas fa-chart-line mr-2 text-[#f3ba2f]"></i> Live Market View (BTC/USDT)</h3>
                 <div class="h-[450px]">
                     <iframe src="https://s.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&interval=D&theme=dark" width="100%" height="100%" frameborder="0"></iframe>
                 </div>
@@ -49,10 +53,20 @@
                 </div>
 
                 <div class="glass-card p-5">
-                    <h3 class="text-lg font-bold mb-4 flex items-center"><i class="fas fa-calculator mr-2 text-[#f3ba2f]"></i> Crypto Calculator</h3>
-                    <script src="https://www.cryptonator.com/static/widget/js/widget.js"></script>
+                    <h3 class="text-lg font-bold mb-4 flex items-center"><i class="fas fa-calculator mr-2 text-[#f3ba2f]"></i> Quick Converter</h3>
                     <div class="space-y-4">
-                        <iframe src="https://www.beautifultools.net/widgets/crypto/convert-widget/?from=BTC&to=USD&amount=1&theme=dark" width="100%" height="220px" frameborder="0"></iframe>
+                        <div>
+                            <label class="text-xs text-gray-400 block mb-1">Amount (BTC)</label>
+                            <input type="number" id="btcAmount" value="1" class="calculator-input" step="any">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-400 block mb-1">Current Price (USDT)</label>
+                            <input type="number" id="btcPrice" class="calculator-input" placeholder="Fetching price...">
+                        </div>
+                        <div class="pt-4 border-t border-gray-700">
+                            <p class="text-xs text-center text-gray-400 uppercase tracking-widest">Total Value</p>
+                            <h2 id="totalValue" class="text-3xl font-bold text-center text-[#f3ba2f] mt-1">$0.00</h2>
+                        </div>
                     </div>
                 </div>
 
@@ -61,11 +75,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             
-            <div class="glass-card p-6 border-l-4 border-[#f3ba2f]">
+            <div class="glass-card p-6 border-l-4 border-[#f3ba2f] relative overflow-hidden">
+                <div class="absolute top-2 right-4 text-[10px] font-mono text-gray-500" id="live-clock">00:00:00 UTC</div>
                 <h3 class="text-xl font-bold mb-3 text-[#f3ba2f]">🚀 Market Strategy</h3>
-                <p class="text-gray-300 leading-relaxed">Currently the market is showing mixed signals. Our recommendation is to hold long positions above $62,000. Watch for the breakout! </p>
-                <div class="mt-4 p-3 bg-[#0b0e11] rounded text-sm text-gray-400">
-                    <i class="fab fa-telegram-plane mr-2"></i> Signals Coming Soon...
+                <p class="text-gray-300 leading-relaxed">
+                    The market is currently showing consolidation patterns. Support is holding at **$62,000**. We recommend waiting for a clean breakout with volume confirmation before entering long positions.
+                </p>
+                <div class="mt-4 p-3 bg-[#0b0e11] rounded flex justify-between items-center text-sm text-gray-400">
+                    <span><i class="fab fa-telegram-plane mr-2 text-blue-400"></i> Signal Status:</span>
+                    <span class="animate-pulse text-yellow-500 font-bold uppercase tracking-tighter">Monitoring...</span>
                 </div>
             </div>
 
@@ -81,5 +99,49 @@
         <p>© 2026 TradeLanka Official. High Performance Analysis Tools.</p>
     </footer>
 
+    <script>
+        // --- Calculator Logic ---
+        const btcInput = document.getElementById('btcAmount');
+        const priceInput = document.getElementById('btcPrice');
+        const totalDisplay = document.getElementById('totalValue');
+
+        async function fetchPrice() {
+            try {
+                const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
+                const data = await response.json();
+                const currentPrice = parseFloat(data.price).toFixed(2);
+                
+                // Only update price input if user hasn't typed manually
+                if (!priceInput.matches(':focus')) {
+                    priceInput.value = currentPrice;
+                }
+                calculateResult();
+            } catch (err) {
+                console.error("Price fetch failed");
+            }
+        }
+
+        function calculateResult() {
+            const amount = parseFloat(btcInput.value) || 0;
+            const price = parseFloat(priceInput.value) || 0;
+            const total = amount * price;
+            totalDisplay.innerText = "$" + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        btcInput.addEventListener('input', calculateResult);
+        priceInput.addEventListener('input', calculateResult);
+
+        // Fetch price every 10 seconds
+        setInterval(fetchPrice, 10000);
+        fetchPrice();
+
+        // --- Live Clock ---
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').innerText = now.toUTCString().split(' ')[4] + " UTC";
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
